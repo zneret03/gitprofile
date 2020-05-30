@@ -1,0 +1,34 @@
+.bg-black{
+    background-color: #1E2227;
+}
+
+.bg-input{
+    background-color: #26303C; 
+}
+
+.bg-userProfile-color{
+    background-color: #1A1E22;
+}
+
+h1{
+    font-size: 2.5rem;
+}
+
+.a-color
+{
+    font-family: SF Mono, Fira Code, Fira Mono, Roboto Mono, Lucida Console, Monaco, monospace;
+    color: #0757B2;
+}
+
+.a-color:hover{
+    text-decoration: underline;
+}
+
+.info{
+    color : rgb(200, 225, 255);
+}
+
+.bg-card {
+    background-color: #24292E;
+}
+

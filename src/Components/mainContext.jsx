@@ -3,28 +3,28 @@ const MainContext = React.createContext();
 const MainProvider = (props) => {           
 
     const [gitUser, setGitUser] = React.useState([]);
-    const [loading, setLoading] = React.useState(true);
+    //const [loading, setLoading] = React.useState(true);
     React.useEffect(() => {
         (async() => {
-            const api = await fetch('https://api.github.com/users/zneret03');
+            const api = await fetch(`https://api.github.com/users/zneret03`);
             const response = await api.json();
             const result = [];
 
             result.push(response);
 
-            setLoading(false);
+            //setLoading(false);
             setGitUser(result);
         })();
     }, [])
 
 
     if(!gitUser){
-        return <div className="flex items-center justify-center">No data rendered</div>
+        return <div className="flex items-center justify-center h-screen">No data rendered</div>
     }
 
-    if(loading){
-        return <div className="flex items-center justify-center">loading...</div>
-    }
+    // if(loading){
+    //     return <div className="flex items-center justify-center h-screen">loading...</div>
+    // }
 
     return(
         <MainContext.Provider value={gitUser}>

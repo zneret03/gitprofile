@@ -1,14 +1,17 @@
 import React from 'react';
-import Page from './page/github'
-import {MainProvider} from './Components/mainContext'
-
+import gitProfile from './page/github'
+import MainInput from './page/MainInput';
+import UserProfile from './page/userProfile'
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 function App() {
   return (
-    <MainProvider>
-    <>
-      <Page />
-    </>
-    </MainProvider>
+      <Router>
+        <>
+          <Route path="/profile" component={MainInput}/>
+          <Route path="/user" component={gitProfile}/> 
+          <Route path="/userProfile" component={UserProfile}/> 
+        </>
+      </Router>
   );
 }
 
