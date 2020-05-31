@@ -31,7 +31,7 @@ const MainInput = () =>{
                         <input type="text" name="username" 
                         value={getUser} onChange={(e) => setUser(e.target.value)}
                         className="appearance-none rounded focus:outline-none focus:shadow-outline
-                        bg-input py-3 px-10 text-blue-400 text-center text-3xl font-mono"/ >
+                        bg-input py-3 w-full inline-block sm:px-16 text-blue-400 text-center text-3xl font-mono"/ >
                         <div className="mt-5">
                             <button className="block border w-full py-2 text-white 
                             rounded hover:bg-gray-500 font-mono text-2xl">
