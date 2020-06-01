@@ -28,6 +28,10 @@ h1{
     color : rgb(200, 225, 255);
 }
 
+.bg-color{
+    background-color: #F6F8FA;
+}
+
 .bg-card {
     background-color: #24292E;
 }

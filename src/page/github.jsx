@@ -1,10 +1,26 @@
 import React from 'react';
 import Headers from './Headers';
 import Main from '../Components/Main'
+// import GhPolyglot from 'gh-polyglot';
+
 const GitProfile = (props) => {   
     const [gitUser, setGitUser] = React.useState([]);
     const [loading, setLoading] = React.useState(false);
+    const [langData, setLangData] = React.useState(null);
     //const [loading, setLoading] = React.useState(true);
+
+    //!Pie chart 
+    //!Fetching top languages from github api
+
+    // const getlangData = () =>{
+    //     const user = new GhPolyglot(`${gitUser}`);
+    //     user.userStats((err, stats) => {
+    //         if(err){
+    //             console.error('Error :', err);
+    //         }
+    //         setLangData(stats);
+    //     })
+    // }
 
     React.useEffect(() => {
         async function fetchData() {
@@ -22,9 +38,12 @@ const GitProfile = (props) => {
             });
 
             //setLoading(false);
+            console.log(langData); 
+            getlangData();
             setGitUser(result);
         };
 
+        //getlangData();
         fetchData();
     },[props.query]);
                                                                                                     
