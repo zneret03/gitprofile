@@ -36,3 +36,10 @@ h1{
     background-color: #24292E;
 }
 
+.language {
+    height: 10px;
+    width: 10px;
+    background-color: #555;
+    border-radius: 50%;
+}
+

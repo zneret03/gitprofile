@@ -5,29 +5,19 @@ import {faCalendarAlt, faBriefcase, faMapMarkerAlt} from '@fortawesome/free-soli
 //components 
 import GitInformation from '../Components/GitInformation';
 import StatsCard from '../Components/StatsCard';
-import Main from '../Components/Main';
 const Headers = props =>{
 
+    //Convert Date
     function convertDate(){
         const date = new Date(Date.parse(props.users.created_at));
         return date.toDateString();
-    }
-
-    if(props.users.message){
-        return <Main key={props.users.id}><div>
-                       <label className="block text-4xl text-center font-bold text-white mb-5">
-                           Git Profile
-                       </label>
-                       <h1 className="text-white text-lg">Data not found! try again later</h1>
-                   </div>
-               </Main>
     }
 
     return(
         <div className="h-screen bg-userProfile-color">
             {/**wave svg*/}
             <div className="absolute bottom-0">
-                <img src={require('../images/Vector.svg')} alt="icon"/>
+                 <img src={require('../images/Vector.svg')} alt="icon"/>
             </div>
             {/**github icon*/}
             <div className="absolute right-0">
