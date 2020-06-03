@@ -1,7 +1,7 @@
 import React from 'react';
 import Headers from './Headers';
 import Error from './Error';
-
+import Repositories from '../page/Repositories'
 const GitProfile = (props) => {   
     const [gitUser, setGitUser] = React.useState([]);
     const [gitRepositories, setRepositories] = React.useState([]);
