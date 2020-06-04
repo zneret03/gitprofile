@@ -44,3 +44,6 @@ h1{
     background-color: #C0C0C0;
 }
 
+li{
+    list-style-type: none;
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-import Root from './Components/Root'
+import gitProfile from './page/github'
 import MainInput from './page/MainInput';
 import NoRouteMatch from './page/404';
 import Chart from './page/Chart'
@@ -11,7 +11,7 @@ function App() {
   return (
         <Router>
           <Switch>
-              <Route exact path="/user" component={Root}/> 
+              <Route exact path="/user" component={gitProfile}/> 
               <Route exact path="/" component={MainInput}/>
               <Route exact path="/Chart" component={Chart} />
               <Route exat path="/Repositories" component={Repositories} />

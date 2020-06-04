@@ -1,21 +1,16 @@
 import React from 'react';
 import Headers from './Headers';
 import Error from './Error';
+import PropTypes from 'prop-types';
 import Repositories from '../page/Repositories'
 const GitProfile = (props) => {   
     const [gitUser, setGitUser] = React.useState([]);
     const [gitRepositories, setRepositories] = React.useState([]);
     const [error, setError] = React.useState({active : false, type : 200});
-    // const [rateLimit, setRateLimit] = React.useState(null);
-    // const [langData, setLangData] = React.useState(null);
-    //const [loading, setLoading] = React.useState(true);
-
-    //!Pie chart 
-   //!Fetching top languages from github api
 
     //get user data
     const getUserData = async () => {
-            const params = new URLSearchParams(props.query);
+            const params = new URLSearchParams(props.location.search);
             const API = 'https://api.github.com/users/';
             const DEFAULT_QUERY = params.get('id');
 
@@ -43,7 +38,7 @@ const GitProfile = (props) => {
     }
 
     const getRepositories = async() => {
-        const params = new URLSearchParams(props.query);
+        const params = new URLSearchParams(props.location.search);
         const DEFAULT_QUERY = params.get('id');
         const API = `https://api.github.com/users/` + DEFAULT_QUERY + `/repos?per_page=100`;
 
@@ -67,14 +62,14 @@ const GitProfile = (props) => {
             console.error('Error : ', error.message)
         });
 
-        setRepositories(repositories_array);
         console.log(repositories_array);
+        setRepositories(repositories_array);
     }
  
     React.useEffect(() => {
         getUserData();
         getRepositories();
-    });
+    },[]);
 
     return(
         <div>
@@ -88,10 +83,22 @@ const GitProfile = (props) => {
                     key={items.message ? Math.floor(Math.random() * 100) : items.id} 
                     error={error}/>
                 ))}
+
+                {gitRepositories.map(repo => (
+                    <Repositories 
+                    repoData={repo} 
+                    key={Math.floor(Math.random() * 100)}
+                    />
+                ))}
             </div>
             }
         </div>
     );
+}
+
+GitProfile.propTypes = {
+    gitRepositories : PropTypes.array.isRequired,
+    gitUser : PropTypes.array.isRequired
 }
 
 export default GitProfile;

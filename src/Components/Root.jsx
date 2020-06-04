@@ -7,8 +7,6 @@ const Root = (props) => {
     return(
         <>
             <GitProfile query={props.location.search}/>
-            {/* <Chart /> */}
-            <Repositories />
         </>
     );
 }
