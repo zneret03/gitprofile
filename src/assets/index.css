@@ -47,3 +47,10 @@ h1{
 li{
     list-style-type: none;
 }
+
+.truncate{
+    white-space: nowrap;
+    width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
