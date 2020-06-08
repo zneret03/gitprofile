@@ -15,6 +15,7 @@
     "axios": "^0.19.2",
     "chart.js": "^2.9.3",
     "dotenv": "^8.2.0",
+    "gh-polyglot": "^2.2.2",
     "lodash": "^4.17.15",
     "postcss-cli": "^7.1.1",
     "react": "^16.13.1",

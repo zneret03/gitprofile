@@ -1,7 +1,7 @@
 import React from 'react';
 import {Pie, Bar} from 'react-chartjs-2'
 // import {langColor, mockLangData} from '../utils';
-const Chart = () =>{
+const Chart = ({languageData}) =>{
 
     const [pie, setpie] = React.useState({});
     const [bar, setbar] = React.useState({});
@@ -51,6 +51,7 @@ const Chart = () =>{
     React.useEffect(() => {
         pieChart();
         barChart();
+        console.log(languageData)
     }, []);
 
     //     const data = {

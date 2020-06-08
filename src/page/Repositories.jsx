@@ -5,32 +5,29 @@ const Repositories = ({repoData}) => {
 
     const [topRepos, setTopRepos] = React.useState([]);
 
-    const getTopRepos = type =>{
-        const LIMIT = 8;
-
-        const sorted = repoData
-        .filter(repo => !repo.fork)
-        .slice(0, LIMIT);
-
-        setTopRepos(sorted);
-    }
-
     React.useEffect(() => {
         if(repoData.length){
-            getTopRepos();
-        }   
-    }, [])
+            const LIMIT = 100;
 
-    //!Playing with grid
-    //!issue the size need to be align
+            const sorted = repoData
+            .filter(repo => !repo.fork)
+            .slice(0, LIMIT);
+    
+            setTopRepos(sorted);
+        }   
+    }, [repoData])
+
+    const style = {
+        color : '#3C3636'
+    }
 
     return(
         <div className="bg-color">
-            <div className="container mx-auto">
+            <div className="container mx-auto px-4">
                 <h1 className="text-3xl text-gray-600">Top Repositories</h1>
                 {topRepos.length > 0 ? (
                     <div className="grid lg:grid-cols-3 lg:gap-3 grid-rows gap-3 py-5">
-                    {repoData.map(repo => (
+                    {topRepos.map(repo => (
                     <li key={repo.id}>
                         <div className="overflow-hidden shadow-xl hover:shadow-lg bg-white p-8">
                             <div className="rounded-sm ml-1 flex">
@@ -38,8 +35,8 @@ const Repositories = ({repoData}) => {
                                         <div className="flex flex-grow">
                                         <Octicon className="my-2" icon={Repo}/>
                                         {repo.name.length > 19 
-                                        ? (<h3 className="mx-3 text-2xl font-mono truncate">{repo.name}</h3>) 
-                                        : (<h3 className="mx-3 text-2xl font-mono">{repo.name}</h3>) }
+                                        ? (<h3 className="mx-3 text-2xl font-mono truncate" style={{color : style.color}}>{repo.name}</h3>) 
+                                        : (<h3 className="mx-3 text-2xl font-mono" style={{color : style.color}}>{repo.name}</h3>) }
                                         </div>  
                                         {/* <div>
                                             <p className="block text-xs">{repo.description}</p>
@@ -74,7 +71,6 @@ const Repositories = ({repoData}) => {
                         ))}
                     </div>
                 ) : (<p className="text-gray-600 flex justify-center items-center h-screen">No Repositories found!!!</p>)}
-
             </div>
             </div>
     );

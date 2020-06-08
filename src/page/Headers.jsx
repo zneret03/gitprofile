@@ -17,7 +17,7 @@ const Headers = props =>{
         <div className="h-screen bg-userProfile-color">
             {/**wave svg*/}
             <div className="absolute bottom-0">
-                 <img src={require('../images/Vector.svg')} alt="icon"/>
+                 <img className="fill-current w-screen" src={require('../images/Vector.svg')} alt="icon"/>
             </div>
             {/**github icon*/}
             <div className="absolute right-0">

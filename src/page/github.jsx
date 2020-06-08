@@ -1,11 +1,15 @@
 import React from 'react';
 import Headers from './Headers';
 import Error from './Error';
+import Chart from './Chart';
 import PropTypes from 'prop-types';
 import Repositories from '../page/Repositories'
+import GhPolyglot from 'gh-polyglot';
+
 const GitProfile = (props) => {   
     const [gitUser, setGitUser] = React.useState([]);
     const [gitRepositories, setRepositories] = React.useState([]);
+    const [languageData, setLanguageData] = React.useState([]);
     const [error, setError] = React.useState({active : false, type : 200});
 
     //get user data
@@ -34,7 +38,24 @@ const GitProfile = (props) => {
                 console.error('Error : ', error.message)
             });
 
+            //console.log(result);
             setGitUser(result);
+    }
+
+    //get language statistics
+    const getLangData = () =>{
+        const params = new URLSearchParams(props.location.search);
+        const DEFAULT_QUERY = params.get('id');
+        const me = new GhPolyglot(DEFAULT_QUERY);
+        
+        me.userStats((err, stats)=>{
+            if(err){
+                console.log({Error : err.message});
+                setError({active :true, type: 400});
+            }
+            return setLanguageData(stats);
+        })
+
     }
 
     const getRepositories = async() => {
@@ -62,11 +83,11 @@ const GitProfile = (props) => {
             console.error('Error : ', error.message)
         });
 
-        console.log(repositories_array);
         setRepositories(repositories_array);
     }
  
     React.useEffect(() => {
+        getLangData();
         getUserData();
         getRepositories();
     },[]);
@@ -77,18 +98,23 @@ const GitProfile = (props) => {
                 <Error error={error}/>
             ) : 
             <div className="h-screen">
-                {gitUser.map(items => (
+                {gitUser.map((items, index) => (
                     <Headers 
                     users={items} 
-                    key={items.message ? Math.floor(Math.random() * 100) : items.id} 
+                    key={items.message ? index : items.id} 
                     error={error}/>
                 ))}
 
-                {gitRepositories.map(repo => (
+                {gitRepositories.map((repo, index) => (
                     <Repositories 
                     repoData={repo} 
-                    key={Math.floor(Math.random() * 100)}
+                    key={index}
                     />
+                ))}
+
+                
+                {languageData.map((repoStatistics, index) => (
+                    <Chart key={index} languageData={repoStatistics}/>
                 ))}
             </div>
             }
