@@ -1,6 +1,6 @@
 import langColors from './langColors';
 import mockLangData from './mockLangData';
-
+import buildChart from './buildChart';
 const backgroundColor = [
     'rgba(255, 99, 132, 0.7)',
     'rgba(54, 162, 235, 0.7)',
@@ -20,7 +20,8 @@ const borderColor = [
 ];
 
 export {
-    langColors, 
+    langColors,
+    buildChart, 
     mockLangData,
     backgroundColor,
     borderColor

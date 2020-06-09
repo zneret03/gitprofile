@@ -19,7 +19,6 @@
     "lodash": "^4.17.15",
     "postcss-cli": "^7.1.1",
     "react": "^16.13.1",
-    "react-chartjs-2": "^2.9.0",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",

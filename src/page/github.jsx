@@ -9,8 +9,11 @@ import GhPolyglot from 'gh-polyglot';
 const GitProfile = (props) => {   
     const [gitUser, setGitUser] = React.useState([]);
     const [gitRepositories, setRepositories] = React.useState([]);
-    const [languageData, setLanguageData] = React.useState([]);
+    const [languageData, setLanguageData] = React.useState(null);
     const [error, setError] = React.useState({active : false, type : 200});
+
+    //* Reminders
+    //TODO: working on charts
 
     //get user data
     const getUserData = async () => {
@@ -53,8 +56,8 @@ const GitProfile = (props) => {
                 console.log({Error : err.message});
                 setError({active :true, type: 400});
             }
-            return setLanguageData(stats);
-        })
+            setLanguageData(stats);
+        });
 
     }
 
@@ -105,6 +108,9 @@ const GitProfile = (props) => {
                     error={error}/>
                 ))}
 
+                {languageData && <Chart langData={languageData}/>}
+               
+
                 {gitRepositories.map((repo, index) => (
                     <Repositories 
                     repoData={repo} 
@@ -112,10 +118,6 @@ const GitProfile = (props) => {
                     />
                 ))}
 
-                
-                {languageData.map((repoStatistics, index) => (
-                    <Chart key={index} languageData={repoStatistics}/>
-                ))}
             </div>
             }
         </div>
@@ -124,7 +126,8 @@ const GitProfile = (props) => {
 
 GitProfile.propTypes = {
     gitRepositories : PropTypes.array.isRequired,
-    gitUser : PropTypes.array.isRequired
+    gitUser : PropTypes.array.isRequired,
+    languageData : PropTypes.array.isRequired
 }
 
 export default GitProfile;
