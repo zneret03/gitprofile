@@ -8,7 +8,7 @@ const buildScales = axes => {
         {
           ticks: {
             fontFamily: fonts.inter,
-            fontSize: 12,
+            fontSize: 15,
           },
         },
       ],
