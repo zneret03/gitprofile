@@ -5,13 +5,12 @@ import Chart from './Chart';
 import PropTypes from 'prop-types';
 import Repositories from '../page/Repositories'
 import GhPolyglot from 'gh-polyglot';
-
+import Footer from './Footer';
 
 const GitProfile = (props) => {   
     const [gitUser, setGitUser] = React.useState(null);
     const [gitRepositories, setRepositories] = React.useState(null);
     const [languageData, setLanguageData] = React.useState(null);
-    const [loading, setLoading] = React.useState(true);
     const [error, setError] = React.useState({active : false, type : 200});
 
     //get language statistics
@@ -69,7 +68,6 @@ const GitProfile = (props) => {
             if(response.status === 403){
                 setError({active: true, type: 403})
             }
-            setLoading(false);
             return response.json();
         })
         .then((data) => {
@@ -86,6 +84,7 @@ const GitProfile = (props) => {
         getRepositories();
     },[]);
 
+
     return(
         <div>
             {error && error.active ? (
@@ -98,11 +97,11 @@ const GitProfile = (props) => {
                 {languageData && gitRepositories && <Chart 
                     langData={languageData} 
                     repoData={gitRepositories} 
-                    loading={loading}
                 />}
                
-                {gitRepositories && <Repositories repoData={gitRepositories} />
-            }
+                {gitRepositories && <Repositories repoData={gitRepositories} />}
+
+                <Footer/>
             </div>
             }
         </div>

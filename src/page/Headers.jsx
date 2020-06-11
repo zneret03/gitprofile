@@ -5,13 +5,7 @@ import {faCalendarAlt, faBriefcase, faMapMarkerAlt} from '@fortawesome/free-soli
 //components 
 import GitInformation from '../Components/GitInformation';
 import StatsCard from '../Components/StatsCard';
-const Headers = props =>{
-
-    //Convert Date
-    function convertDate(){
-        const date = new Date(Date.parse(props.users.created_at));
-        return date.toDateString();
-    }
+const Headers = ({users}) =>{
 
     return(
         <div className="h-screen bg-userProfile-color">
@@ -31,44 +25,49 @@ const Headers = props =>{
             <div className="flex justify-center">
                 <div className="mt-10">
 
-                    <img className="w-40 h-40 rounded-full object-cover" src={`https://avatars3.githubusercontent.com/u/${props.users.id}?v=4`} alt="user avatar"/>
+                    <img className="w-40 h-40 rounded-full object-cover" src={`https://avatars3.githubusercontent.com/u/${users.id}?v=4`} alt="user avatar"/>
                 </div>
             </div>
             <div className="flex justify-center mt-3">
-                <h1 className="text-white font-bold">{props.users.name}</h1>
+                <h1 className="text-white font-bold">{users.name}</h1>
             </div>
             <div className="flex justify-center mt-1">
-                <h2><a href={props.users.html_url} className="text-white text-2xl a-color">@{props.users.login}</a></h2> 
+                <h2><a href={users.html_url} className="text-white text-2xl a-color">@{users.login}</a></h2> 
             </div>
             {/**User Information */}
             <div className="flex content-start flex-wrap justify-center sm:justify-center py-1  mt-3">
                 {/**Work */}
-                {props.users.company ? (
+                {users.company ? (
                     <GitInformation className={'info mr-3'}>
                         <i><FontAwesomeIcon className="mr-3" icon={faBriefcase}/></i>
-                        {props.users.company}
+                        {users.company}
                     </GitInformation>
                 ) : null}
                 {/**Location */}
-                {props.users.location ? 
-                    (<GitInformation className={'info mr-3'}>
+                {users.location ? 
+                    (<GitInformation className={'info mx-6'}>
                         <i><FontAwesomeIcon className="mr-3" icon={faMapMarkerAlt}/></i>
-                        {props.users.location}
+                        {users.location}
                     </GitInformation> 
                     ) : null}
                 {/**Date Joined */}
                 <GitInformation className="info">
                     <i><FontAwesomeIcon className="mr-3" icon={faCalendarAlt}/></i>
-                        Joined {convertDate()}
+                        Joined {new Date(users.created_at).toLocaleDateString('en-US', {
+                            month : 'long',
+                            day : 'numeric',
+                            year : 'numeric'
+                        })}
                 </GitInformation>   
             </div>
             <div className="flex justify-center">
-                <StatsCard number={props.users.public_repos} stats={'REPOSITORIES'}/>
-                <StatsCard number={props.users.followers} stats={'FOLLOWERS'}/>
-                <StatsCard number={props.users.following} stats={'FOLLOWING'}/>
+                <StatsCard number={users.public_repos} stats={'REPOSITORIES'}/>
+                <StatsCard number={users.followers} stats={'FOLLOWERS'}/>
+                <StatsCard number={users.following} stats={'FOLLOWING'}/>
             </div>
         </div>
     );
 }
+
 
 export default Headers;

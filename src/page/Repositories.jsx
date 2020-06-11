@@ -7,7 +7,7 @@ const Repositories = ({repoData}) => {
 
     React.useEffect(() => {
         if(repoData.length){
-            const LIMIT = 100;
+            const LIMIT = 15;
 
             const sorted = repoData
             .filter(repo => !repo.fork)
@@ -22,15 +22,15 @@ const Repositories = ({repoData}) => {
     }
 
     return(
-        <div className="bg-color">
-            <div className="container mx-auto px-4">
-                <h1 className="text-3xl text-gray-600">Top Repositories</h1>
+        <div className="bg-color pt-10">
+            <div className="container mx-auto px-5 sm:px-12">
+                <h1 className="text-3xl text-gray-500">Top Repositories</h1>
                 {topRepos.length > 0 ? (
-                    <div className="grid lg:grid-cols-3 lg:gap-3 grid-rows gap-3 py-5">
+                    <div className="grid lg:grid-cols-2 xl:grid-cols-3 lg:gap-3  grid-rows gap-5 py-5">
                     {topRepos.map(repo => (
                     <li key={repo.id}>
                         <div className="overflow-hidden shadow-xl hover:shadow-lg bg-white p-8">
-                            <div className="rounded-sm ml-1 flex">
+                            <div className="rounded-sm ml-1">
                                     <a href={repo.html_url}>
                                         <div className="flex flex-grow">
                                         <Octicon className="my-2" icon={Repo}/>
@@ -41,7 +41,7 @@ const Repositories = ({repoData}) => {
                                         {/* <div>
                                             <p className="block text-xs">{repo.description}</p>
                                         </div> */}
-                                        <div className="text-sm text-gray-600 flex flex-grow">
+                                        <div className="text-sm text-gray-600">
                                             <div>
                                                 {/**Repository language*/}
                                                 <span className="language mr-3 mt-6" style={{backgroundColor : langColors[repo.language]}}></span>

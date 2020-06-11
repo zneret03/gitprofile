@@ -1,9 +1,9 @@
 import React from 'react';
 import {buildChart, langColors, backgroundColor, borderColor} from '../utils/index';
 import PropTypes from 'prop-types';
-import Loader from 'react-loader-spinner';
+import ChartCard from '../Components/ChartCard';
 
-const Chart = ({langData, repoData, loading}) =>{
+const Chart = ({langData, repoData}) =>{
 
     // const [pie, setpie] = React.useState({});
     // const [bar, setbar] = React.useState({});
@@ -105,35 +105,32 @@ const Chart = ({langData, repoData, loading}) =>{
     
     return(
         <>
-            {/**if data is not fetch return spinner */}
-            {loading ? (
-                <Loader 
-                className="flex justify-center items-center h-screen" 
-                type="ThreeDots" color="#1A1E22" height={50} width={50} 
-                timeout={3000}/>
-            ): 
-            (
-            <div className="flex flex-col sm:flex-row items-center justify-center bg-color">
-                <div className="shadow-lg rounded p-10 mt-3 mx-2 bg-white">
-                    {langChartError ? <h1 className="text-2xl mx-3 mb-5 text-gray-500">Nothing to see here!</h1> :
-                    <h1 className="text-2xl mx-3 mb-5 text-gray-500">Top Languages</h1>}
-                    <canvas ref={canvasTopLanguage} width={chartSize} height={chartSize}/>
-                </div>
-                <div className="shadow-lg rounded p-10 mt-3 mx-5 bg-white">
-                    {starredChartError ? <h1 className="text-2xl mx-3 mb-5 text-gray-500">Nothing to see here!</h1> :
-                    <h1 className="text-2xl mx-3 mb-5 text-gray-500">Most Starred</h1>}
-                    <canvas ref={canvasStartChart} width={chartSize} height={chartSize}/>
-                </div>
-                <div className="shadow-lg rounded p-10 mt-3 mx-2 bg-white">
+            <div className="flex flex-col sm:flex-col lg:flex-row md:flex-col lg:flex-wrap items-center justify-center bg-color ">
+                <ChartCard>
+                    {langChartError ? <h1 className="text-3xl mx-1 mb-5 text-gray-500">Nothing to see here!</h1> :
+                    <h1 className="text-3xl mx-1 mb-5 text-gray-500">Top Languages</h1>}
+                    <div className="p-3 sm:p-4 lg:p-6">
+                        <canvas ref={canvasTopLanguage} width={chartSize} height={chartSize}/>
+                    </div>
+                </ChartCard>
+                <ChartCard>
+                    {starredChartError ? <h1 className="text-3xl mx-1 mb-5 text-gray-500">Nothing to see here!</h1> :
+                    <h1 className="text-3xl mx-1 mb-5 text-gray-500">Most Starred</h1>}
+                    <div className="p-3 sm:p-4 lg:p-6">
+                        <canvas ref={canvasStartChart} width={chartSize} height={chartSize}/>
+                    </div>
+                </ChartCard>
+                <ChartCard>
                     {starPerLanguageError ? 
-                    <h1 className="text-2xl mx-3 mb-5 text-gray-500">Nothing to see here!</h1> : 
-                    <h1 className="text-2xl mx-3 mb-5 text-gray-500">Star per Language</h1>}
-                    <canvas ref={canvasStarPerLanguage} width={chartSize} height={chartSize}/>
-                </div>
+                    <h1 className="text-3xl mx-1 mb-5 text-gray-500">Nothing to see here!</h1> : 
+                    <h1 className="text-3xl mx-1 mb-5 text-gray-500">Star per Language</h1>}
+                    <div className="p-3 sm:p-4 lg:p-6">
+                        <canvas ref={canvasStarPerLanguage} width={chartSize} height={chartSize}/>
+                    </div>
+                </ChartCard>
             </div>
-            )}
         </>
-    )
+    );
 }
 
 Chart.propTypes = {
