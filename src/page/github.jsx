@@ -101,7 +101,7 @@ const GitProfile = (props) => {
                
                 {gitRepositories && <Repositories repoData={gitRepositories} />}
 
-                <Footer/>
+                {languageData && gitRepositories && <Footer/>}
             </div>
             }
         </div>
