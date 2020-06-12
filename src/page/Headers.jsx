@@ -5,8 +5,8 @@ import {faCalendarAlt, faBriefcase, faMapMarkerAlt} from '@fortawesome/free-soli
 //components 
 import GitInformation from '../Components/GitInformation';
 import StatsCard from '../Components/StatsCard';
-import Followers from '../page/Followers';
-import Following from '../page/Following';
+import Followers from './Followers';
+import Following from './Following';
 
 const Headers = ({users, followers, following}) =>{
     const [modalFollowers, setModalFollowers] = React.useState(false);

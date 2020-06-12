@@ -3,7 +3,7 @@ import Headers from './Headers';
 import Error from './Error';
 import Chart from './Chart';
 import PropTypes from 'prop-types';
-import Repositories from '../page/Repositories'
+import Repositories from './Repositories'
 import GhPolyglot from 'gh-polyglot';
 import Footer from './Footer';
 
