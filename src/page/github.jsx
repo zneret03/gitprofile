@@ -138,7 +138,7 @@ const GitProfile = (props) => {
         getRepositories();
         getFollowers();
         getFollowing();
-    },[]);
+    });
 
 
     return(

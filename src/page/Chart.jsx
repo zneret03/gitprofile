@@ -96,7 +96,7 @@ const Chart = ({langData, repoData}) =>{
             initStarredChart();
             initStartPerLanguage();
         }
-    }, []);
+    });
 
     const chartSize = 300;
     const langChartError = !(langChartData && langChartData.length > 0);
