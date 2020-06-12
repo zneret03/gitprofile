@@ -5,9 +5,43 @@ import {faCalendarAlt, faBriefcase, faMapMarkerAlt} from '@fortawesome/free-soli
 //components 
 import GitInformation from '../Components/GitInformation';
 import StatsCard from '../Components/StatsCard';
-const Headers = ({users}) =>{
+import Followers from '../page/Followers';
+import Following from '../page/Following';
+
+const Headers = ({users, followers, following}) =>{
+    const [modalFollowers, setModalFollowers] = React.useState(false);
+    const [modalFollowing, setModalFollowing] = React.useState(false);
+
+    const modalFollowersOpen = e => {
+        e.preventDefault();
+        if(modalFollowers === false){
+            setModalFollowers(true)
+        }
+    }
+
+    const modalFollowersClose = e => {
+        e.preventDefault();
+        if(modalFollowers){
+            setModalFollowers(false);
+        }
+    }
+
+    const modalFollowingsOpen = e => {
+        e.preventDefault();
+        if(modalFollowing === false){
+            setModalFollowing(true)
+        }
+    }
+
+    const modalFollowingClose = e => {
+        e.preventDefault();
+        if(modalFollowing){
+            setModalFollowing(false);
+        }
+    }
 
     return(
+        <>
         <div className="h-screen bg-userProfile-color">
             {/**wave svg*/}
             <div className="absolute bottom-0">
@@ -24,7 +58,6 @@ const Headers = ({users}) =>{
             {/**user avatar*/}
             <div className="flex justify-center">
                 <div className="mt-10">
-
                     <img className="w-40 h-40 rounded-full object-cover" src={`https://avatars3.githubusercontent.com/u/${users.id}?v=4`} alt="user avatar"/>
                 </div>
             </div>
@@ -62,10 +95,13 @@ const Headers = ({users}) =>{
             </div>
             <div className="flex justify-center">
                 <StatsCard number={users.public_repos} stats={'REPOSITORIES'}/>
-                <StatsCard number={users.followers} stats={'FOLLOWERS'}/>
-                <StatsCard number={users.following} stats={'FOLLOWING'}/>
+                <StatsCard modal={(e) => modalFollowersOpen(e)} number={users.followers} stats={'FOLLOWERS'}/>
+                <StatsCard modal={(e) => modalFollowingsOpen(e)} number={users.following} stats={'FOLLOWING'}/>
             </div>
         </div>
+        {modalFollowers === true && <Followers followers={followers} modal={(e) => modalFollowersClose(e)}/>}   
+        {modalFollowing === true && <Following following={following} modal={(e) => modalFollowingClose(e)}/>}   
+        </>
     );
 }
 

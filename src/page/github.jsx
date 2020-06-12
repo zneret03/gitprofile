@@ -11,6 +11,8 @@ const GitProfile = (props) => {
     const [gitUser, setGitUser] = React.useState(null);
     const [gitRepositories, setRepositories] = React.useState(null);
     const [languageData, setLanguageData] = React.useState(null);
+    const [followers, setfollowers] = React.useState(null);
+    const [following, setFollowing] = React.useState(null);
     const [error, setError] = React.useState({active : false, type : 200});
 
     //get language statistics
@@ -26,7 +28,59 @@ const GitProfile = (props) => {
             }
             setLanguageData(stats);
         });
-    }                                                               
+    }        
+    
+    //get Followers
+    const getFollowers = async () => {
+        const params = new URLSearchParams(props.location.search);
+        const API = 'https://api.github.com/users/';
+        const FOLLOWERS = '/followers';
+        const DEFAULT_QUERY = params.get('id');
+
+        await fetch(API + DEFAULT_QUERY + FOLLOWERS)
+        .then(response => {
+            if(response.status === 404){
+                setError({active : true, type : 404})
+            }
+
+            if(response.status === 403){
+                setError({active: true, type: 403})
+            }
+
+            return response.json();
+        }).then((data) => {
+            setfollowers(data);
+        }).catch((error) => {
+            setError({active: true, type:400});
+            console.error('Error : ', error.message)
+        });
+    } 
+
+     //get Following
+     const getFollowing = async () => {
+        const params = new URLSearchParams(props.location.search);
+        const API = 'https://api.github.com/users/';
+        const FOLLOWERS = '/following';
+        const DEFAULT_QUERY = params.get('id');
+
+        await fetch(API + DEFAULT_QUERY + FOLLOWERS)
+        .then(response => {
+            if(response.status === 404){
+                setError({active : true, type : 404})
+            }
+
+            if(response.status === 403){
+                setError({active: true, type: 403})
+            }
+
+            return response.json();
+        }).then((data) => {
+            setFollowing(data);
+        }).catch((error) => {
+            setError({active: true, type:400});
+            console.error('Error : ', error.message)
+        });
+    } 
 
     //get user data
     const getUserData = async () => {
@@ -82,6 +136,8 @@ const GitProfile = (props) => {
         getLangData();
         getUserData();
         getRepositories();
+        getFollowers();
+        getFollowing();
     },[]);
 
 
@@ -92,7 +148,11 @@ const GitProfile = (props) => {
             ) : 
             <div className="h-screen">
 
-                {gitUser && <Headers users={gitUser} error={error}/>}
+                {gitUser && followers && <Headers 
+                users={gitUser} 
+                error={error} 
+                followers={followers}
+                following={following}/>}
 
                 {languageData && gitRepositories && <Chart 
                     langData={languageData} 

@@ -54,3 +54,10 @@ li{
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+.truncate-followers{
+    white-space: nowrap;
+    width: 50px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
