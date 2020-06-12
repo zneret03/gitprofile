@@ -2,7 +2,7 @@
 
 A nicer look of your github with charts 
 
-![demo](https://github.com/zneret03/gitprofile/master/src/images/frontpage.png)
+![demo](https://github.com/zneret03/gitprofile/master/static/frontpage.png?raw=true)
 
 Built with :
 
