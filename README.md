@@ -2,7 +2,7 @@
 
 A nicer look of your github with charts 
 
-![demo](https://raw.githubusercontent.com/zneret03/gitprofile/master/static/frontpage.png)
+![demo](https://github.com/zneret03/gitprofile/blob/master/src/static/frontpage.png)
 
 Built with :
 
@@ -14,10 +14,8 @@ Built with :
 ### Getting Started
 1. Install dependencies
 
-    ```npm 
-    install```
+    ```npm install```
 
 2. Development
 
-    ```npm 
-    start```
+    ```npm start```
