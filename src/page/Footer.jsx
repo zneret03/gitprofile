@@ -7,8 +7,8 @@ const Footer = () => {
     }
 
     return(
-        <div className="bg-color">
-            <div className="flex justify-center pt-10 text-2lg pb-5">
+        <div className="bg-color container mx-auto px-10">
+            <div className="flex justify-center flex-wrap pt-10 text-2lg pb-5">
                 <span className="mr-2 text-gray-700">Built with</span>
                 <a href="https://reactjs.org/" className="mr-1" style={{color : link_style.link}}>
                     Reactjs
@@ -29,7 +29,7 @@ const Footer = () => {
                 <a href="https://www.npmjs.com/package/gh-polyglot" className="ml-1" style={{color : link_style.link}}>
                     Gh-polyglot
                 </a>
-                <span className="ml-2 text-gray-700">and more!</span>
+                <span className="ml-1 text-gray-700">and more!</span>
             </div>
         </div>
     );
