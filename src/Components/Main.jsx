@@ -12,7 +12,7 @@ const Main = (props) => {
                 <div className="mb-5">
                     <div className="absolute top-0 right-0">
                         <a href="https://github.com/zneret03/gitprofile">
-                            <img className="absolute right-0 py-2 px-3" 
+                            <img className="absolute right-0 py-2 px-3 z-50" 
                             src={require('../images/github.svg')} alt="img"/>
                         </a>
                         <img src={require('../images/triangleShape.svg')} alt="img"/>

@@ -18,4 +18,4 @@ Built with :
 
 2. Development
 
-    ```npm start```
+    ```npm run start```
