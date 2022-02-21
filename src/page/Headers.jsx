@@ -45,7 +45,7 @@ const Headers = ({users, followers, following}) =>{
         <div className="h-screen bg-userProfile-color">
             {/**wave svg*/}
             <div className="absolute bottom-0">
-                 <img className="fill-current w-screen" src={require('../images/Vector.svg')} alt="icon"/>
+                 <img className="fill-current w-screen" src={require('../images/vector.svg')} alt="icon"/>
             </div>
             {/**github icon*/}
             <div className="absolute right-0">
