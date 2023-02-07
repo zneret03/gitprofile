@@ -11,25 +11,23 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
-    "autoprefixer": "^9.8.0",
-    "chart.js": "^2.9.3",
+    "ansi-regex": "^6.0.1",
+    "autoprefixer": "^9.8.8",
+    "chart.js": "^2.9.4",
     "dotenv": "^8.2.0",
     "gh-polyglot": "^2.3.2",
-    "lodash": "^4.17.15",
-    "postcss-cli": "^7.1.1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "lodash": "^4.17.21",
+    "postcss": "^8.4.21",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.1",
-    "tailwindcss": "^1.4.6"
+    "react-scripts": "^5.0.1"
   },
   "scripts": {
-    "start": "npm run watch:css && react-scripts start",
-    "build": "npm run build:css && react-scripts build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "build:css": "postcss src/assets/tailwind.css -o src/assets/main.css",
-    "watch:css": "postcss src/assets/tailwind.css -o src/assets/main.css"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -46,5 +44,7 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "tailwindcss": "^3.2.4"
+  }
 }

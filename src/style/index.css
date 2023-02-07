@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bg-black {
+  background-color: #1e2227;
+}
+
+.bg-input {
+  background-color: #26303c;
+}
+
+.bg-userProfile-color {
+  background-color: #1a1e22;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+.a-color {
+  font-family: SF Mono, Fira Code, Fira Mono, Roboto Mono, Lucida Console,
+    Monaco, monospace;
+  color: #0757b2;
+}
+
+.a-color:hover {
+  text-decoration: underline;
+}
+
+.info {
+  color: rgb(200, 225, 255);
+}
+
+.bg-color {
+  background-color: #f6f8fa;
+}
+
+.bg-card {
+  background-color: #24292e;
+}
+
+.language {
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  background-color: #c0c0c0;
+}
+
+li {
+  list-style-type: none;
+}
+
+.truncate {
+  white-space: nowrap;
+  width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.truncate-followers {
+  white-space: nowrap;
+  width: 50px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
